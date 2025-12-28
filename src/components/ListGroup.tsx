@@ -1,11 +1,13 @@
-// Rendering Lists
+// Conditional Rendering
 
 function ListGroup() {
-  const items = ["Chennai", "Banglore", "Kerala", "Hyderbad", "Tirupati"];
+  let items = ["Chennai", "Banglore", "Kerala", "Hyderbad", "Tirupati"];
+  items = [];
 
   return (
     <>
       <h1>List</h1>
+      {items.length === 0 && <p>No items found!</p>}
       <ul className="list-group">
         {items.map((item) => (
           <li key={item}>{item}</li>
