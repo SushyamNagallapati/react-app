@@ -5,7 +5,7 @@ import { useState } from "react";
 function ListGroup() {
   let items = ["Chennai", "Banglore", "Kerala", "Hyderbad", "Tirupati"];
 
-  // Hook
+  // Hook - we used state hook
   const [selectedIndex, setSelectedIndex] = useState(-1); // with this state hook, we can tell react that this component can have data or state, that will vhange over time.
 
   return (
