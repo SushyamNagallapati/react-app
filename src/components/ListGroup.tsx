@@ -1,16 +1,19 @@
-// Managing State
-
 import { useState } from "react";
 
-function ListGroup() {
-  let items = ["Chennai", "Banglore", "Kerala", "Hyderbad", "Tirupati"];
+// Passing Data via Props - Using Props we can pass data to our components
+// { items: [], heading: string }
+interface Props {
+  items: string[];
+  heading: string;
+}
 
+function ListGroup({ items, heading }: Props) {
   // Hook - we used state hook
   const [selectedIndex, setSelectedIndex] = useState(-1); // with this state hook, we can tell react that this component can have data or state, that will vhange over time.
 
   return (
     <>
-      <h1>List</h1>
+      <h1>{heading}</h1>
       {items.length === 0 && <p>No items found!</p>}
       <ul className="list-group">
         {items.map((item, index) => (
