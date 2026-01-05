@@ -1,12 +1,11 @@
-import ListGroup from "./components/ListGroup";
+import { BsFillCalendar3EventFill } from "react-icons/bs";
+
 import "./App.css";
 
 function App() {
-  const items = ["Chennai", "Bengalore", "Hyderbad"];
-
   return (
     <div>
-      <ListGroup heading="Cities" items={items} onSelectItem={() => items} />
+      <BsFillCalendar3EventFill color="red" size="40" />
     </div>
   );
 }
