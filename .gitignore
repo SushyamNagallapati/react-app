@@ -23,3 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 src/components/ListGroup.tsx
+src/components/ListGroup/ListGroup.css
