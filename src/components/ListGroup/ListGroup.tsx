@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./ListGroup.css"; // After styling the component in a css file, we need to import it here on top.
+import styles from "./ListGroup.module.css"; // After styling the component in a css file, we need to import it here on top.
 
 // Passing Data via Props - Using Props we can pass data to our components
 // { items: [], heading: string }
@@ -16,11 +16,13 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
   // Hook - we used state hook
   const [selectedIndex, setSelectedIndex] = useState(-1); // with this state hook, we can tell react that this component can have data or state, that will vhange over time.
 
+  // to add multiple classes in styling our list items, we need to wrap it in an array
+  // and we need to use join method on the array, and join all using a space
   return (
     <>
       <h1>{heading}</h1>
       {items.length === 0 && <p>No items found!</p>}
-      <ul className="list-group">
+      <ul className={[styles.listGroup, styles.container].join(" ")}>
         {items.map((item, index) => (
           <li
             className={
