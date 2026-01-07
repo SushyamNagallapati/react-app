@@ -1,27 +1,27 @@
 // Updating State
 
-// Exercise 1: Updating the player name
+// Exercise 2: Updating the array
 
 import { useState } from "react";
 
 function App() {
-  const [game, setGame] = useState({
-    id: 1,
-    player: {
-      name: "Sai",
-    },
+  const [pizza, setPizza] = useState({
+    name: "Spicy Tandoori",
+    toppings: ["Chicken"],
   });
 
   const handleClick = () => {
-    setGame({ ...game, player: { ...game.player, name: "Sushyam" } }); // Solution
+    setPizza({ ...pizza, toppings: [...pizza.toppings, "Cheese"] }); // Solution
   };
 
   return (
     <>
       <div>
-        {game.id}
-        {game.player.name}
-        <button onClick={handleClick}>Click Me</button>
+        <div>{pizza.name}</div>
+        {pizza.toppings}
+        <div>
+          <button onClick={handleClick}>Click to add Toppings</button>
+        </div>
       </div>
     </>
   );
