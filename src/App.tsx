@@ -1,29 +1,40 @@
 // Updating State
 
-// Exercise 2: Updating the array
+// Exercise 3: Updating the array of objects
+// Eg. Adding quantities
 
 import { useState } from "react";
 
 function App() {
-  const [pizza, setPizza] = useState({
-    name: "Spicy Tandoori",
-    toppings: ["Chicken"],
+  const [cart, setCart] = useState({
+    discount: 0.1,
+    items: [
+      { id: 1, title: "Product1", quantity: 1 },
+      { id: 2, title: "Product2", quantity: 1 },
+    ],
   });
 
   const handleClick = () => {
-    setPizza({ ...pizza, toppings: [...pizza.toppings, "Cheese"] }); // Solution
+    setCart({
+      ...cart,
+      items: cart.items.map((item) =>
+        item.id === 1 ? { ...item, quantity: item.quantity + 1 } : item
+      ), // Solution
+    });
   };
 
   return (
-    <>
-      <div>
-        <div>{pizza.name}</div>
-        {pizza.toppings}
-        <div>
-          <button onClick={handleClick}>Click to add Toppings</button>
-        </div>
-      </div>
-    </>
+    <div>
+      <p>Discount: {cart.discount}</p>
+      <ul>
+        {cart.items.map((item) => (
+          <li key={item.id}>
+            {item.title} - Qty: {item.quantity}
+          </li>
+        ))}
+      </ul>
+      <button onClick={handleClick}>Click Me</button>
+    </div>
   );
 }
 
