@@ -1,37 +1,19 @@
-// Simplifying Update Logic with Immer
+// Sharing State Between Components
+
+// We are implementing an E-Commerce example, where total no. of items are shown in NavBar and shows the item in the shopping Cart.
+// We also set a button to clear items in the cart.
 
 import { useState } from "react";
-import produce from "immer";
-import { set } from "immer/dist/internal";
+import Cart from "./components/Cart";
+import NavBar from "./components/NavBar";
 
 function App() {
-  const [bugs, setBugs] = useState([
-    { id: 1, title: "Bug 1", fixed: false },
-    { id: 2, title: "Bug 2", fixed: false },
-  ]);
-
-  const handleClick = () => {
-    // setBugs(bugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : bug)));
-
-    // instead of map, we can use immer, by calling the produce function and as an argument we need to pass an arrow function,
-    // now by convention we call the parameter of that function "draft".
-    // draft is a proxy object that records the changes we're going to apply to the bugs array. Like, draft is the copy of the bugs array.
-    setBugs(
-      produce((draft) => {
-        const bug = draft.find((bug) => bug.id === 1);
-        if (bug) bug.fixed = true;
-      })
-    );
-  };
+  const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
 
   return (
     <div>
-      {bugs.map((bug) => (
-        <p key={bug.id}>
-          {bug.title} {bug.fixed ? "Fixed" : "New"}
-        </p>
-      ))}
-      <button onClick={handleClick}>Click Me</button>
+      <NavBar cartItemsCount={cartItems.length} />
+      <Cart cartItems={cartItems} onClear={() => setCartItems([])} />
     </div>
   );
 }
