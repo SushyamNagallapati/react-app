@@ -1,20 +1,29 @@
-// Sharing State Between Components
+// Updating State
 
-// We are implementing an E-Commerce example, where total no. of items are shown in NavBar and shows the item in the shopping Cart.
-// We also set a button to clear items in the cart.
+// Exercise 1: Updating the player name
 
 import { useState } from "react";
-import Cart from "./components/Cart";
-import NavBar from "./components/NavBar";
 
 function App() {
-  const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
+  const [game, setGame] = useState({
+    id: 1,
+    player: {
+      name: "Sai",
+    },
+  });
+
+  const handleClick = () => {
+    setGame({ ...game, player: { ...game.player, name: "Sushyam" } }); // Solution
+  };
 
   return (
-    <div>
-      <NavBar cartItemsCount={cartItems.length} />
-      <Cart cartItems={cartItems} onClear={() => setCartItems([])} />
-    </div>
+    <>
+      <div>
+        {game.id}
+        {game.player.name}
+        <button onClick={handleClick}>Click Me</button>
+      </div>
+    </>
   );
 }
 
