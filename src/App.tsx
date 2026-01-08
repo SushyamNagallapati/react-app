@@ -1,12 +1,12 @@
-// Exercise - Building an ExpandableText Component (Read More/ Read Less)
+// Creating a Form
 
 import { useState } from "react";
-import ExpandableText from "./components/ExpandableText";
+import Form from "./components/Form";
 
 function App() {
   return (
     <div>
-      <ExpandableText>Hello World</ExpandableText>
+      <Form />
     </div>
   );
 }
