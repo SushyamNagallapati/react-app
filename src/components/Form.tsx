@@ -1,4 +1,4 @@
-// Schema based Validation with Zod
+// Disabling the Submit Button, if the Form is Invalid
 
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -20,7 +20,7 @@ const Form = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }, // Nested Destructuring in JS
+    formState: { errors, isValid }, // isValid is used to tell whether the form is valid or not
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => console.log(data);
@@ -51,7 +51,7 @@ const Form = () => {
         />
         {errors.age && <p className="text-danger">{errors.age.message}</p>}
       </div>
-      <button className="btn btn-primary" type="submit">
+      <button disabled={!isValid} className="btn btn-primary" type="submit">
         Submit
       </button>
     </form>
