@@ -1,7 +1,7 @@
 // Building Expense Filter
 
 import React from "react";
-import { categories } from "../../App";
+import categories from "../categories";
 import { optional } from "zod";
 
 interface Props {
